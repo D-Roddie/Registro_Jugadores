@@ -14,7 +14,6 @@ public class UI {
         menu_principal();
     }
 
-    
     public static void menu_principal() throws java.io.IOException {
         boolean seguir;
         int opcion;
@@ -32,7 +31,23 @@ public class UI {
         } while (opcion != 3);
     }
 
-    
+    public static void procesarOpcion(int pOpcion) throws IOException {
+        switch (pOpcion) {
+            case 1:
+                ingresar_datos_jugador();
+                break;
+            case 2:
+                mostrar_jugador();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                out.println("Opción inválida");
+        }
+    }
+
     public static void ingresar_datos_jugador() throws IOException {
         String nombre, apellido, username, rol;
         out.println("Ingrese el nombre del jugador");
@@ -48,25 +63,16 @@ public class UI {
 
     }
 
-    
-    public static void procesarOpcion(int pOpcion) throws IOException {
-        switch (pOpcion) {
-            case 1:
-                ingresar_datos_jugador();
-                break;
-            case 2:
-              
+    public static void mostrar_jugador() {
+        for (int i = 0; i < nuevoJugador.getListaJugador().size(); i++) {
+            Jugador cont_jugador = nuevoJugador.getListaJugador().get(i);
 
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                out.println("Opción inválida");
+            out.println("Nombre: " + cont_jugador.getNombre());
+            out.println("Apellido: " + cont_jugador.getApellido());
+            out.println("Username: " + cont_jugador.getUsername());
+            out.println("Rol: " + cont_jugador.getRol());
+            out.println(" ");
         }
     }
-
-    
 
 }
